@@ -1,28 +1,27 @@
-import { useState } from 'react'
+import React, { useState } from 'react';
+import Hero from './components/Hero';
+import Collections from './components/Collections';
+import BestSellers from './components/BestSellers';
+import Footer from './components/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [lang, setLang] = useState('en');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen w-full bg-[#0b0b0b]" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+      {/* Hero with Spline 3D bottles + language toggle + newsletter popup */}
+      <Hero lang={lang} onToggleLang={() => setLang((l) => (l === 'en' ? 'ar' : 'en'))} />
+
+      {/* Collections preview grid */}
+      <Collections />
+
+      {/* Best sellers carousel with soft reflections */}
+      <BestSellers />
+
+      {/* Luxe footer */}
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
